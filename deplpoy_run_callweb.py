@@ -8,7 +8,8 @@ async def deploy_run_web_call(bpmn_process_id):
     """ TBD """
 
     await client.deploy_process("process_models/call-website.bpmn")
-    await client.run_process(bpmn_process_id=bpmn_process_id)
+    results = await client.run_process_with_result(bpmn_process_id=bpmn_process_id, timeout=10000)
+    a=3
 
 channel = create_insecure_channel(
     hostname='44.199.120.6',

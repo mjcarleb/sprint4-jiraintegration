@@ -13,11 +13,11 @@
         <zeebe:taskDefinition type="io.camunda:http-json:1"/>
         <zeebe:ioMapping>
           <zeebe:input source="get" target="method"/>
-          <zeebe:input source="https://stackoverflow.com/questions/47479202/how-to-handle-rest-api-timeout" target="url"/>
+          <zeebe:input source="https://weather.com/" target="url"/>
         </zeebe:ioMapping>
         <zeebe:taskHeaders>
-          <zeebe:header key="resultVariable"/>
           <zeebe:header key="resultExpression"/>
+          <zeebe:header key="resultVariable" value="stack_response"/>
         </zeebe:taskHeaders>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ox3ozh</bpmn:incoming>
