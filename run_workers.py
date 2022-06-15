@@ -20,10 +20,11 @@ worker = ZeebeWorker(channel)
 ####################################################
 # Define work this client should do when trade_match_worker job exists in Zeebe
 @worker.task(task_type="rest_call")
-async def execute_rest_call(method, url):
+async def execute_rest_call(method, url, external_user_task_ack_id):
 
     print(f"method = {method}")
     print(f"url = {url}")
+    print(f"external_task_ack_id = {external_user_task_ack_id}")
 
     if method == "get":
         r = requests.get(url)

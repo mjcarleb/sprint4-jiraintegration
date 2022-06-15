@@ -14,6 +14,7 @@
         <zeebe:ioMapping>
           <zeebe:input source="get" target="method"/>
           <zeebe:input source="https://weather.com/" target="url"/>
+          <zeebe:input source="= &quot;external_user_tack_ack_000000001&quot;" target="external_user_task_ack_id"/>
         </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ox3ozh</bpmn:incoming>
@@ -22,7 +23,7 @@
     <bpmn:sequenceFlow id="Flow_14iordz" sourceRef="Activity_03cejzn" targetRef="Event_00v304i"/>
     <bpmn:serviceTask id="Activity_03cejzn" name="Wait for webhook">
       <bpmn:extensionElements>
-        <zeebe:taskDefinition type="webhook"/>
+        <zeebe:taskDefinition type="= external_user_task_ack_id"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1a4ejx0</bpmn:incoming>
       <bpmn:outgoing>Flow_14iordz</bpmn:outgoing>
@@ -30,6 +31,10 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_088975fa-2f84-4796-b13f-104af6cb4fd1">
+      <bpmndi:BPMNEdge id="Flow_14iordz_di" bpmnElement="Flow_14iordz">
+        <di:waypoint x="510" y="118"/>
+        <di:waypoint x="612" y="118"/>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1a4ejx0_di" bpmnElement="Flow_1a4ejx0">
         <di:waypoint x="340" y="118"/>
         <di:waypoint x="410" y="118"/>
@@ -38,18 +43,14 @@
         <di:waypoint x="186" y="118"/>
         <di:waypoint x="240" y="118"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_14iordz_di" bpmnElement="Flow_14iordz">
-        <di:waypoint x="510" y="118"/>
-        <di:waypoint x="612" y="118"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="150" y="100" width="36" height="36"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1dy3lav_di" bpmnElement="Activity_0xudkh3">
-        <dc:Bounds x="240" y="78" width="100" height="80"/>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_00v304i_di" bpmnElement="Event_00v304i">
         <dc:Bounds x="612" y="100" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dy3lav_di" bpmnElement="Activity_0xudkh3">
+        <dc:Bounds x="240" y="78" width="100" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1lwbo5t_di" bpmnElement="Activity_03cejzn">
         <dc:Bounds x="410" y="78" width="100" height="80"/>
