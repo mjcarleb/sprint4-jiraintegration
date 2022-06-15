@@ -1,10 +1,8 @@
 import asyncio
+import time
+
 from pyzeebe import ZeebeWorker, create_insecure_channel
 import requests
-
-response = requests.get('https://google.com/')
-print(response)
-
 
 ####################################################
 #      SETUP TO USE C8 ZEEBE
@@ -33,6 +31,7 @@ async def execute_rest_call(method, url):
         breakpoint()
 
     status = r.status_code
+
     return {"status": f"{status}"}
 
 # Main loop
