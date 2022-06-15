@@ -1,5 +1,5 @@
 import asyncio
-import time
+import uuid
 
 from pyzeebe import ZeebeWorker, create_insecure_channel
 import requests
@@ -20,11 +20,10 @@ worker = ZeebeWorker(channel)
 ####################################################
 # Define work this client should do when trade_match_worker job exists in Zeebe
 @worker.task(task_type="rest_call")
-async def execute_rest_call(method, url, external_user_task_ack_id):
+async def execute_rest_call(method, url):
 
     print(f"method = {method}")
     print(f"url = {url}")
-    print(f"external_task_ack_id = {external_user_task_ack_id}")
 
     if method == "get":
         r = requests.get(url)
@@ -33,7 +32,7 @@ async def execute_rest_call(method, url, external_user_task_ack_id):
 
     status = r.status_code
 
-    return {"status": f"{status}"}
+    return {"webhook_uuid": f"webhook_{uuid.uuid4()}"}
 
 # Main loop
 loop = asyncio.get_event_loop()

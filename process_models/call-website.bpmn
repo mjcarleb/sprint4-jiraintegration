@@ -14,7 +14,6 @@
         <zeebe:ioMapping>
           <zeebe:input source="get" target="method"/>
           <zeebe:input source="https://weather.com/" target="url"/>
-          <zeebe:input source="= &quot;external_user_tack_ack_000000001&quot;" target="external_user_task_ack_id"/>
         </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ox3ozh</bpmn:incoming>
@@ -23,7 +22,7 @@
     <bpmn:sequenceFlow id="Flow_14iordz" sourceRef="Activity_03cejzn" targetRef="Event_00v304i"/>
     <bpmn:serviceTask id="Activity_03cejzn" name="Wait for webhook">
       <bpmn:extensionElements>
-        <zeebe:taskDefinition type="= external_user_task_ack_id"/>
+        <zeebe:taskDefinition type="= webhook_uuid"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1a4ejx0</bpmn:incoming>
       <bpmn:outgoing>Flow_14iordz</bpmn:outgoing>
