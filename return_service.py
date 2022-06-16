@@ -8,8 +8,8 @@ def hello():
 
 @app.route('/CTL',methods=['POST'])
 def ackUserForm():
-    external_user_task_ack_id = request.form['external_user_task_ack_id']
-    print(f"external_user_task_ack_id =  {external_user_task_ack_id}")
+    webhook_id = request.form['webhook_id']
+    print(f"webhook_id =  {webhook_id}")
     return request.form
 
 if __name__ == '__main__':
