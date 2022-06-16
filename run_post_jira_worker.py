@@ -22,9 +22,20 @@ worker = ZeebeWorker(channel)
 @worker.task(task_type="rest_call")
 async def execute_rest_call(method, url):
 
-    print(f"method = {method}")
-    print(f"url = {url}")
+    webhook_uuid = f"webhook_{uuid.uuid4()}"
+    print(f"url = {url} (will be Jira)")
+    print(f"method = {method} (will be post with Jira)")
+    print(f"webhook_uuid = {webhook_uuid}")
+    print()
 
+
+    # make post
+    # use Jira username and secret
+    # use Jira URL
+    # include in the post the variables in form of following:
+    #   - trade
+    #   - assignee
+    #   - webhook_uuid
     if method == "get":
         r = requests.get(url)
     else:
@@ -32,7 +43,7 @@ async def execute_rest_call(method, url):
 
     status = r.status_code
 
-    return {"webhook_uuid": f"webhook_{uuid.uuid4()}"}
+    return {"webhook_uuid": f"{webhook_uuid}"}
 
 # Main loop
 loop = asyncio.get_event_loop()
