@@ -27,40 +27,33 @@ def recevieWebhook():
     webhook_id = request.form['webhook_id']
     print(f"webhook_id =  {webhook_id}")
 
-    # Create 1-time worker to clear Zeebe task waiting for Jira to return this webhook_id
-    worker = ZeebeWorker(channel)
-
-    @worker.task(task_type=f"{webhook_id}")
-    async def execute_webhook():
-
-        # Nothing to do
-        # Now that Jira has returned the webhook_id, we just clear the task on Zeebe with return
-        # Do I need to delete this task type from Zeebe once finished?
-        pass
-
-        return None
-
-    # Clean up 1-time worker
-    del worker
-
     return {"status":  "ok"}
+
+#############################################
+# Create 1-time worker to clear Zeebe task waiting for Jira to return this webhook_id
+webhook_id = "webhook_c194a702-8861-4bb7-a571-e49d022e973c"
+worker = ZeebeWorker(channel)
+@worker.task(task_type=f"{webhook_id}")
+def execute_webhook(url, method, webhook_uuid):
+    # Now that Jira has returned the webhook_id, we just clear the task on Zeebe with return
+    return {}
+#############################################
+
 
 if __name__ == '__main__':
 
-    # Run the web server to accept webhooks
-    app.run(debug=True)
+    #  Run the web server to accept webhooks
+    #  app.run(debug=True)
 
 
-# Where does this loop run?
-"""
-        loop = asyncio.get_event_loop()
-        try:
-            loop.run_until_complete(worker.work())
-        finally:
-            # Delete task with type webhook_id of Zeebe?
-            # Delete execute webhook object?
-            loop.stop()
-            loop.close()
-"""
+    # Where does this loop run?
+    loop = asyncio.get_event_loop()
+    try:
+        loop.run_until_complete(worker.work())
+        loop.stop()
+        loop.close()
+    finally:
+        loop.stop()
+        loop.close()
 
 
