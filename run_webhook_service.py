@@ -21,7 +21,7 @@ channel = create_insecure_channel(
 
 # Create single threaded worker
 worker = ZeebeWorker(channel)
-webhook_id = "webhook_13be0034-09e6-4712-9601-8c77f79835e3"
+webhook_id = "webhook_e887c1b0-703b-4668-978a-f0cf88da9296"
 
 def stopping_decorator(job):
     loop.stop()
