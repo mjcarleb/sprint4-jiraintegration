@@ -19,7 +19,7 @@ worker = ZeebeWorker(channel)
 #          DEFINE WORKERS
 ####################################################
 # Define work this client should do when trade_match_worker job exists in Zeebe
-@worker.task(task_type="rest_call")
+@worker.task(task_type="jira_interface")
 async def execute_rest_call(method, url):
 
     webhook_uuid = f"webhook_{uuid.uuid4()}"

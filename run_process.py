@@ -7,7 +7,7 @@ from pyzeebe import ZeebeClient, create_camunda_cloud_channel, create_insecure_c
 async def deploy_run_web_call(bpmn_process_id):
     """ TBD """
 
-    await client.deploy_process("process_models/call-website.bpmn")
+    await client.deploy_process("process_models/jira_integration_demo.bpmn")
     await client.run_process(bpmn_process_id=bpmn_process_id)
 
 channel = create_insecure_channel(
