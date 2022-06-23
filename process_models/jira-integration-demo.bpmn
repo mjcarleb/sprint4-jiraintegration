@@ -12,8 +12,12 @@
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="jira_interface"/>
         <zeebe:ioMapping>
-          <zeebe:input source="get" target="method"/>
-          <zeebe:input source="https://cambridgetech.atlassian.net//rest/api/3/issue" target="url"/>
+          <zeebe:input source="https://cambridgetech.atlassian.net//rest/api/3/issue/" target="url"/>
+          <zeebe:input source="post" target="method"/>
+          <zeebe:input source="&quot;mary had a little lamb&quot;" target="summary"/>
+          <zeebe:input source="mcarlebach@ctepl.com" target="assignee"/>
+          <zeebe:input source="Task" target="issuetype"/>
+          <zeebe:input source="TTP" target="project"/>
         </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ox3ozh</bpmn:incoming>
