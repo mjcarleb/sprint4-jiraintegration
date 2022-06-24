@@ -19,6 +19,7 @@
           <zeebe:input source="Task" target="issuetype"/>
           <zeebe:input source="TTP" target="project"/>
           <zeebe:input source="https://c22f-2600-4040-225b-4800-9d70-5eb2-f5d6-6db2.ngrok.io/CTL" target="webhook_response_url"/>
+          <zeebe:input source="B 100 AAPL 10308.37 USD vs. payment " target="broken_trade"/>
         </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ox3ozh</bpmn:incoming>

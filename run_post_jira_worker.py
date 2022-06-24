@@ -21,7 +21,8 @@ worker = ZeebeWorker(channel)
 ####################################################
 # Define work this client should do when trade_match_worker job exists in Zeebe
 @worker.task(task_type="jira_interface")
-async def execute_rest_call(method, url, project, issuetype, summary, assignee, webhook_response_url):
+async def execute_rest_call(method, url, project, issuetype, summary, assignee, webhook_response_url,
+                            broken_trade):
     print(f"url = {url}")
     print(f"method = {method}")
     print(f"project = {project}")
@@ -29,6 +30,7 @@ async def execute_rest_call(method, url, project, issuetype, summary, assignee, 
     print(f"summary = {summary}")
     print(f"webhook_response_url {webhook_response_url}")
     print(f"assignee = {assignee}")
+    print(f"broken trade = {broken_trade}")
 
     webhook_uuid = f"webhook_{uuid.uuid4()}"
     print(f"webhook_uuid = {webhook_uuid}")
@@ -42,6 +44,18 @@ async def execute_rest_call(method, url, project, issuetype, summary, assignee, 
         "fields": {"project":  {"key":  project},
                    "issuetype":  {"name":  issuetype},
                    "summary":  summary,
+                   "description": {
+                       "type": "doc",
+                       "version":  1,
+                       "content":  [
+                           {"type":  "paragraph",
+                            "content":  [
+                                 {"text":  broken_trade,
+                                  "type":  "text"
+                                   }
+                             ]}
+                       ]
+                   },
                    "customfield_10299":  webhook_response_url,
                    "customfield_10298":  webhook_uuid
                    }
