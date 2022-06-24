@@ -1,6 +1,6 @@
 import asyncio
 import uuid
-import json
+import os
 
 from pyzeebe import ZeebeWorker, create_insecure_channel
 import requests
@@ -21,12 +21,13 @@ worker = ZeebeWorker(channel)
 ####################################################
 # Define work this client should do when trade_match_worker job exists in Zeebe
 @worker.task(task_type="jira_interface")
-async def execute_rest_call(method, url, project, issuetype, summary, assignee):
+async def execute_rest_call(method, url, project, issuetype, summary, assignee, webhook_response_url):
     print(f"url = {url}")
     print(f"method = {method}")
     print(f"project = {project}")
     print(f"issuetype = {issuetype}")
     print(f"summary = {summary}")
+    print(f"webhook_response_url {webhook_response_url}")
     print(f"assignee = {assignee}")
 
     webhook_uuid = f"webhook_{uuid.uuid4()}"
@@ -35,12 +36,13 @@ async def execute_rest_call(method, url, project, issuetype, summary, assignee):
     # include in the post the variables in form of following:
     #   - trade
     #   - webhook url (public flask url /CTL)
-    username = "mcarlebach@ctepl.com"  # Jira
-    password = "KNIubBqwWYTWbD7bmYVBDE66"  # Jir
+    username = os.getenv("JIRA_USERNAME")
+    password = os.getenv("JIRA_PASSWORD")
     payload = {
         "fields": {"project":  {"key":  project},
                    "issuetype":  {"name":  issuetype},
                    "summary":  summary,
+                   "customfield_10299":  webhook_response_url,
                    "customfield_10298":  webhook_uuid
                    }
     }

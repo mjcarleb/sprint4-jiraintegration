@@ -14,10 +14,11 @@
         <zeebe:ioMapping>
           <zeebe:input source="https://cambridgetech.atlassian.net//rest/api/3/issue/" target="url"/>
           <zeebe:input source="post" target="method"/>
-          <zeebe:input source="&quot;mary had a little lamb&quot;" target="summary"/>
-          <zeebe:input source="mcarlebach@ctepl.com" target="assignee"/>
+          <zeebe:input source="mary had a little lamb 2" target="summary"/>
+          <zeebe:input source="6262f7de6cb53d006a6b2b0a" target="assignee"/>
           <zeebe:input source="Task" target="issuetype"/>
           <zeebe:input source="TTP" target="project"/>
+          <zeebe:input source="https://c22f-2600-4040-225b-4800-9d70-5eb2-f5d6-6db2.ngrok.io/CTL" target="webhook_response_url"/>
         </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ox3ozh</bpmn:incoming>
