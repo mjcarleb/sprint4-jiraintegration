@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="07416fe" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0" camunda:diagramRelationId="f8b03b02-dd63-46d3-b852-e920550bb95d">
+<?xml version="1.0" encoding="UTF-8"?><bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="ed2fcc0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0" camunda:diagramRelationId="f8b03b02-dd63-46d3-b852-e920550bb95d">
   <bpmn:process id="Process_088975fa-2f84-4796-b13f-104af6cb4fd1" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_1ox3ozh</bpmn:outgoing>
@@ -14,12 +14,12 @@
         <zeebe:ioMapping>
           <zeebe:input source="https://cambridgetech.atlassian.net//rest/api/3/issue/" target="url"/>
           <zeebe:input source="post" target="method"/>
-          <zeebe:input source="mary had a little lamb 2" target="summary"/>
+          <zeebe:input source="broken trade in AAPL on May 18, 2022" target="summary"/>
           <zeebe:input source="6262f7de6cb53d006a6b2b0a" target="assignee"/>
           <zeebe:input source="Task" target="issuetype"/>
           <zeebe:input source="TTP" target="project"/>
-          <zeebe:input source="https://c22f-2600-4040-225b-4800-9d70-5eb2-f5d6-6db2.ngrok.io/CTL" target="webhook_response_url"/>
-          <zeebe:input source="B 100 AAPL 10308.37 USD vs. payment " target="broken_trade"/>
+          <zeebe:input source="https://0ab0-2600-4040-225b-4800-c4ec-e891-a108-74eb.ngrok.io/CTL" target="webhook_response_url"/>
+          <zeebe:input source="DETAILS:  B 100 AAPL 10308.37 USD vs. payment " target="broken_trade"/>
         </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ox3ozh</bpmn:incoming>

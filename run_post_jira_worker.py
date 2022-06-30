@@ -44,6 +44,7 @@ async def execute_rest_call(method, url, project, issuetype, summary, assignee, 
         "fields": {"project":  {"key":  project},
                    "issuetype":  {"name":  issuetype},
                    "summary":  summary,
+                   "assignee":  {"id":  assignee},
                    "description": {
                        "type": "doc",
                        "version":  1,
